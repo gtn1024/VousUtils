@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 /**
  * Provide IP convert method.
+ *
  * @author Taoning Ge
  * @since 0.1.0
  */
