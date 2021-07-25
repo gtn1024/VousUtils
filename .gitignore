@@ -1,0 +1,38 @@
+## Java
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+hs_err_pid*
+
+## Gradle
+.gradle
+**/build/
+!src/**/build/
+
+!gradle-wrapper.jar
+
+## JetBrains
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/
+out/
+
+## macOS
+.DS_Store
