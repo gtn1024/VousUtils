@@ -3,8 +3,7 @@ package com.vousutils.text;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilsTextTest {
     @Test
@@ -54,4 +53,36 @@ public class UtilsTextTest {
                 () -> assertEquals("GitHub", UtilsText.deleteFirstAndLastBlanks(" GitHub"))
         );
     }
+
+    @Test
+    @DisplayName("Test reverseText")
+    void testReverseText() {
+        assertAll("reverseText",
+                () -> assertEquals("slitUsuoV", UtilsText.reverseText("VousUtils")),
+                () -> assertEquals("dlroW olleH", UtilsText.reverseText("Hello World")),
+                () -> assertEquals("buHtiG", UtilsText.reverseText("GitHub"))
+        );
+    }
+
+    @Test
+    @DisplayName("Test joinArrayString")
+    void testJoinArrayString() {
+        assertAll("joinArrayString",
+                () -> assertEquals("Hello World", UtilsText.joinArrayString(new String[]{"Hello", "World"}, " ")),
+                () -> assertEquals("a, b, c", UtilsText.joinArrayString(new String[]{"a", "b", "c"}, ", ")),
+                () -> assertEquals("GitHub,Google,Amazon,Apple,Microsoft",
+                        UtilsText.joinArrayString(new String[]{"GitHub", "Google", "Amazon", "Apple", "Microsoft"}, ","))
+        );
+    }
+
+    @Test
+    @DisplayName("Test isTextRepeated")
+    void testIsTextRepeated() {
+        assertAll("isTextRepeated",
+                () -> assertTrue(UtilsText.isTextRepeated("Hello World!", "o")),
+                () -> assertFalse(UtilsText.isTextRepeated("GitHub", "o")),
+                () -> assertFalse(UtilsText.isTextRepeated("GitHub", "H"))
+        );
+    }
+
 }
