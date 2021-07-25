@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id 'maven-publish'
+    id 'signing'
 }
 
 group 'com.vousutils'
-version '0.2.0'
+version '0.2.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -16,4 +18,42 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+javadoc{
+    options.addStringOption("charset", "UTF-8")
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "OSSRH"
+            if (project.version.toString().endsWith("-SNAPSHOT")) {
+                url = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+            } else {
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            }
+
+            credentials {
+                username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+                password = findProperty("ossrhPassword") ?:System.getenv("OSSRH_PASSWORD")
+            }
+
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications.mavenJava)
 }
