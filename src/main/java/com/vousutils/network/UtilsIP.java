@@ -31,9 +31,6 @@ public class UtilsIP {
      * @return Hexadecimal
      */
     public static String ipConvertToHex(String ip) {
-//        num ＝ IP_转至10进制 (IP地址)
-//        返回 (进制_十到十六 (num))
-
         return Long.toHexString(ipConvertToDec(ip));
     }
 
