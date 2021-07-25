@@ -26,6 +26,7 @@ public class UtilsIP {
 
     /**
      * Convert IP String to Hexadecimal
+     *
      * @param ip For example: `192.168.1.1`.
      * @return Hexadecimal
      */
@@ -38,6 +39,7 @@ public class UtilsIP {
 
     /**
      * Convert decimal to IP String.
+     *
      * @param dec For example: `3232235777L`.
      * @return IP String.
      */
@@ -54,10 +56,11 @@ public class UtilsIP {
 
     /**
      * Convert Hexadecimal to IP String.
+     *
      * @param hex For example: `C0A80101`.
      * @return IP String.
      */
     public static String hexConvertToIP(String hex) {
-        return decConvertToIP(Long.parseLong(hex,16));
+        return decConvertToIP(Long.parseLong(hex, 16));
     }
 }
