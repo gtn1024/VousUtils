@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 /**
  * Provide IP convert method.
+ * @author Taoning Ge
+ * @since 0.1.0
  */
 public class UtilsIP {
     /**
@@ -12,6 +14,8 @@ public class UtilsIP {
      *
      * @param ip For example: `192.168.1.1`
      * @return Decimal or `-1`
+     * @author Taoning Ge
+     * @since 0.1.0
      */
     public static long ipConvertToDec(String ip) {
         String[] temp;
@@ -29,6 +33,8 @@ public class UtilsIP {
      *
      * @param ip For example: `192.168.1.1`.
      * @return Hexadecimal
+     * @author Taoning Ge
+     * @since 0.1.0
      */
     public static String ipConvertToHex(String ip) {
         return Long.toHexString(ipConvertToDec(ip));
@@ -39,6 +45,8 @@ public class UtilsIP {
      *
      * @param dec For example: `3232235777L`.
      * @return IP String.
+     * @author Taoning Ge
+     * @since 0.1.0
      */
     public static String decConvertToIP(long dec) {
         byte[] bytes = ByteBuffer.allocate(Long.BYTES).putLong(dec).array();
@@ -56,6 +64,8 @@ public class UtilsIP {
      *
      * @param hex For example: `C0A80101`.
      * @return IP String.
+     * @author Taoning Ge
+     * @since 0.1.0
      */
     public static String hexConvertToIP(String hex) {
         return decConvertToIP(Long.parseLong(hex, 16));
