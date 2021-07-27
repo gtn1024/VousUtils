@@ -20,5 +20,5 @@ jobs:
       run: chmod +x gradlew
     - name: Init gradle project
       run: ./gradlew clean
-    - name: Build with Gradle
-      run: ./gradlew build --scan
+    - name: Test with Gradle
+      run: ./gradlew check --scan
