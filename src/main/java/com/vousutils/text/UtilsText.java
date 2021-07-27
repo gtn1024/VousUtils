@@ -1,5 +1,9 @@
 package com.vousutils.text;
 
+import com.vousutils.text.enums.TextType;
+
+import java.util.Random;
+
 public class UtilsText {
     /**
      * Delete the text on the left.
@@ -102,5 +106,69 @@ public class UtilsText {
         if (i == -1) return false;
         var i2 = s.indexOf(text, i + 1);
         return i2 != -1;
+    }
+
+    /**
+     * Get the text left.
+     *
+     * @param s    The original text.
+     * @param text The specified text.
+     * @return Result.
+     * @author Taoning Ge
+     * @since 0.2.2
+     */
+    public static String getTextLeft(String s, String text) {
+        if (s == null || text == null) return "";
+        var i = s.indexOf(text);
+        if (i <= 0) return "";
+        return s.substring(0, i);
+    }
+
+    /**
+     * Get the text right.
+     *
+     * @param s    The original text.
+     * @param text The specified text.
+     * @return Result.
+     * @author Taoning Ge
+     * @since 0.2.2
+     */
+    public static String getTextRight(String s, String text) {
+        if (s == null || text == null) return "";
+        var i = s.indexOf(text);
+        if (i <= 0) return "";
+        return s.substring(i + 1);
+    }
+
+    /**
+     * Get random text.
+     *
+     * @param length Length
+     * @param type   The enum `TextType`.
+     * @return Random text.
+     * @author Taoning Ge
+     * @since 0.2.2
+     */
+    public static String getRandomString(int length, TextType type) {
+        String str;
+        switch (type) {
+            case LOWERCASE_ONLY:
+                str = "abcdefghijklmnopqrstuvwxyz";
+                break;
+            case UPPERCASE_ONLY:
+                str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                break;
+            case MIX:
+                str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                break;
+            default:
+                throw new RuntimeException("Cannot process " + type);
+        }
+        var random = new Random();
+        var sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            sb.append(str.charAt(random.nextInt(str.length())));
+        }
+        return sb.toString();
     }
 }
