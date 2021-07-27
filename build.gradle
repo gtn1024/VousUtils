@@ -4,8 +4,8 @@ plugins {
     id 'signing'
 }
 
-group 'com.vousutils'
-version '0.2.1'
+group = 'com.vousutils'
+version = '0.2.1'
 
 repositories {
     mavenCentral()
@@ -25,11 +25,49 @@ java {
     withSourcesJar()
 }
 
-javadoc{
+javadoc {
     options.addStringOption("charset", "UTF-8")
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
 
 publishing {
+    publications {
+        mavenJava(MavenPublication) {
+
+            artifactId = 'VousUtils'
+            from components.java
+
+            pom {
+                name = 'VousUtils'
+                description = 'A plenty of utils'
+                url = 'https://www.vousutils.com'
+                licences {
+                    licence {
+                        name = 'MIT License'
+                        url = 'https://raw.githubusercontent.com/gtn1024/VousUtils/main/LICENSE'
+                    }
+                }
+            }
+
+            developers {
+                developer {
+                    id = 'gtn1024'
+                    name = 'Taoning Ge'
+                    email = 'tony.bazhang@gmail.com'
+                }
+            }
+
+            scm {
+                connection = 'scm:git:git://github.com/gtn1024/VousUtils.git'
+                developerConnection = 'scm:git:ssh://github.com/gtn1024/VousUtils.git'
+                url = 'https://github.com/gtn1024/VousUtils'
+            }
+
+        }
+    }
+
     repositories {
         maven {
             name = "OSSRH"
@@ -41,19 +79,13 @@ publishing {
 
             credentials {
                 username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
-                password = findProperty("ossrhPassword") ?:System.getenv("OSSRH_PASSWORD")
+                password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
             }
-
-        }
-    }
-    publications {
-        mavenJava(MavenPublication) {
-            from(components.java)
 
         }
     }
 }
 
 signing {
-    sign(publishing.publications.mavenJava)
+    sign publishing.publications.mavenJava
 }
