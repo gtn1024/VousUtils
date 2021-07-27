@@ -35,36 +35,34 @@ javadoc {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-
             artifactId = 'VousUtils'
             from components.java
-
             pom {
                 name = 'VousUtils'
                 description = 'A plenty of utils'
                 url = 'https://www.vousutils.com'
-                licences {
-                    licence {
+
+                licenses {
+                    license {
                         name = 'MIT License'
                         url = 'https://raw.githubusercontent.com/gtn1024/VousUtils/main/LICENSE'
                     }
                 }
-            }
 
-            developers {
-                developer {
-                    id = 'gtn1024'
-                    name = 'Taoning Ge'
-                    email = 'tony.bazhang@gmail.com'
+                developers {
+                    developer {
+                        id = 'gtn1024'
+                        name = 'Taoning Ge'
+                        email = 'tony.bazhang@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/gtn1024/VousUtils.git'
+                    developerConnection = 'scm:git:ssh://github.com/gtn1024/VousUtils.git'
+                    url = 'https://github.com/gtn1024/VousUtils'
                 }
             }
-
-            scm {
-                connection = 'scm:git:git://github.com/gtn1024/VousUtils.git'
-                developerConnection = 'scm:git:ssh://github.com/gtn1024/VousUtils.git'
-                url = 'https://github.com/gtn1024/VousUtils'
-            }
-
         }
     }
 
