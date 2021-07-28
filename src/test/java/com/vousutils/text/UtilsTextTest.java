@@ -1,9 +1,11 @@
 package com.vousutils.text;
 
+import com.vousutils.number.UtilsNumber;
 import com.vousutils.text.enums.TextType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.vousutils.text.UtilsText.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilsTextTest {
@@ -11,11 +13,11 @@ public class UtilsTextTest {
     @DisplayName("Test deleteLeft")
     void testDeleteLeft() {
         assertAll("deleteLeft",
-                () -> assertEquals("sUtils", UtilsText.deleteLeft("VousUtils", 3)),
-                () -> assertEquals("llo World", UtilsText.deleteLeft("Hello World", 2)),
-                () -> assertEquals("tHub", UtilsText.deleteLeft("GitHub", 2)),
-                () -> assertEquals("", UtilsText.deleteLeft("Hello World", 15)),
-                () -> assertEquals("", UtilsText.deleteLeft(null, 15))
+                () -> assertEquals("sUtils", deleteLeft("VousUtils", 3)),
+                () -> assertEquals("llo World", deleteLeft("Hello World", 2)),
+                () -> assertEquals("tHub", deleteLeft("GitHub", 2)),
+                () -> assertEquals("", deleteLeft("Hello World", 15)),
+                () -> assertEquals("", deleteLeft(null, 15))
         );
     }
 
@@ -23,11 +25,11 @@ public class UtilsTextTest {
     @DisplayName("Test deleteRight")
     void testDeleteRight() {
         assertAll("deleteRight",
-                () -> assertEquals("VousUt", UtilsText.deleteRight("VousUtils", 3)),
-                () -> assertEquals("Hello Wor", UtilsText.deleteRight("Hello World", 2)),
-                () -> assertEquals("GitH", UtilsText.deleteRight("GitHub", 2)),
-                () -> assertEquals("", UtilsText.deleteRight("Hello World", 15)),
-                () -> assertEquals("", UtilsText.deleteRight(null, 15))
+                () -> assertEquals("VousUt", deleteRight("VousUtils", 3)),
+                () -> assertEquals("Hello Wor", deleteRight("Hello World", 2)),
+                () -> assertEquals("GitH", deleteRight("GitHub", 2)),
+                () -> assertEquals("", deleteRight("Hello World", 15)),
+                () -> assertEquals("", deleteRight(null, 15))
         );
     }
 
@@ -35,12 +37,12 @@ public class UtilsTextTest {
     @DisplayName("Test deleteMiddle")
     void testDeleteMiddle() {
         assertAll("deleteMiddle",
-                () -> assertEquals("Votils", UtilsText.deleteMiddle("VousUtils", 3, 3)),
-                () -> assertEquals("Ho World", UtilsText.deleteMiddle("Hello World", 2, 3)),
-                () -> assertEquals("Gub", UtilsText.deleteMiddle("GitHub", 2, 3)),
-                () -> assertEquals("", UtilsText.deleteMiddle("Hello World", 15, 2)),
-                () -> assertEquals("", UtilsText.deleteMiddle("Hello World", 2, 15)),
-                () -> assertEquals("", UtilsText.deleteMiddle(null, 1, 2))
+                () -> assertEquals("Votils", deleteMiddle("VousUtils", 3, 3)),
+                () -> assertEquals("Ho World", deleteMiddle("Hello World", 2, 3)),
+                () -> assertEquals("Gub", deleteMiddle("GitHub", 2, 3)),
+                () -> assertEquals("", deleteMiddle("Hello World", 15, 2)),
+                () -> assertEquals("", deleteMiddle("Hello World", 2, 15)),
+                () -> assertEquals("", deleteMiddle(null, 1, 2))
         );
     }
 
@@ -48,10 +50,10 @@ public class UtilsTextTest {
     @DisplayName("Test deleteFirstAndLastBlanks")
     void testDeleteFirstAndLastBlanks() {
         assertAll("deleteFirstAndLastBlanks",
-                () -> assertEquals("VousUtils", UtilsText.deleteFirstAndLastBlanks("  VousUtils  ")),
-                () -> assertEquals("Hello World", UtilsText.deleteFirstAndLastBlanks(" Hello World ")),
-                () -> assertEquals("GitHub", UtilsText.deleteFirstAndLastBlanks("GitHub ")),
-                () -> assertEquals("GitHub", UtilsText.deleteFirstAndLastBlanks(" GitHub"))
+                () -> assertEquals("VousUtils", deleteFirstAndLastBlanks("  VousUtils  ")),
+                () -> assertEquals("Hello World", deleteFirstAndLastBlanks(" Hello World ")),
+                () -> assertEquals("GitHub", deleteFirstAndLastBlanks("GitHub ")),
+                () -> assertEquals("GitHub", deleteFirstAndLastBlanks(" GitHub"))
         );
     }
 
@@ -59,9 +61,9 @@ public class UtilsTextTest {
     @DisplayName("Test reverseText")
     void testReverseText() {
         assertAll("reverseText",
-                () -> assertEquals("slitUsuoV", UtilsText.reverseText("VousUtils")),
-                () -> assertEquals("dlroW olleH", UtilsText.reverseText("Hello World")),
-                () -> assertEquals("buHtiG", UtilsText.reverseText("GitHub"))
+                () -> assertEquals("slitUsuoV", reverseText("VousUtils")),
+                () -> assertEquals("dlroW olleH", reverseText("Hello World")),
+                () -> assertEquals("buHtiG", reverseText("GitHub"))
         );
     }
 
@@ -69,10 +71,10 @@ public class UtilsTextTest {
     @DisplayName("Test joinArrayString")
     void testJoinArrayString() {
         assertAll("joinArrayString",
-                () -> assertEquals("Hello World", UtilsText.joinArrayString(new String[]{"Hello", "World"}, " ")),
-                () -> assertEquals("a, b, c", UtilsText.joinArrayString(new String[]{"a", "b", "c"}, ", ")),
+                () -> assertEquals("Hello World", joinArrayString(new String[]{"Hello", "World"}, " ")),
+                () -> assertEquals("a, b, c", joinArrayString(new String[]{"a", "b", "c"}, ", ")),
                 () -> assertEquals("GitHub,Google,Amazon,Apple,Microsoft",
-                        UtilsText.joinArrayString(new String[]{"GitHub", "Google", "Amazon", "Apple", "Microsoft"}, ","))
+                        joinArrayString(new String[]{"GitHub", "Google", "Amazon", "Apple", "Microsoft"}, ","))
         );
     }
 
@@ -80,9 +82,9 @@ public class UtilsTextTest {
     @DisplayName("Test isTextRepeated")
     void testIsTextRepeated() {
         assertAll("isTextRepeated",
-                () -> assertTrue(UtilsText.isTextRepeated("Hello World!", "o")),
-                () -> assertFalse(UtilsText.isTextRepeated("GitHub", "o")),
-                () -> assertFalse(UtilsText.isTextRepeated("GitHub", "H"))
+                () -> assertTrue(isTextRepeated("Hello World!", "o")),
+                () -> assertFalse(isTextRepeated("GitHub", "o")),
+                () -> assertFalse(isTextRepeated("GitHub", "H"))
         );
     }
 
@@ -90,13 +92,13 @@ public class UtilsTextTest {
     @DisplayName("Test getTextLeft")
     void testGetTextLeft() {
         assertAll("getTextLeft",
-                () -> assertEquals("V", UtilsText.getTextLeft("VousUtils", "o")),
-                () -> assertEquals("Hell", UtilsText.getTextLeft("Hello World!", "o")),
-                () -> assertEquals("", UtilsText.getTextLeft("GitHub", "o")),
-                () -> assertEquals("Git", UtilsText.getTextLeft("GitHub", "H")),
-                () -> assertEquals("", UtilsText.getTextLeft("GitHub", null)),
-                () -> assertEquals("", UtilsText.getTextLeft(null, null)),
-                () -> assertEquals("", UtilsText.getTextLeft(null, "H"))
+                () -> assertEquals("V", getTextLeft("VousUtils", "o")),
+                () -> assertEquals("Hell", getTextLeft("Hello World!", "o")),
+                () -> assertEquals("", getTextLeft("GitHub", "o")),
+                () -> assertEquals("Git", getTextLeft("GitHub", "H")),
+                () -> assertEquals("", getTextLeft("GitHub", null)),
+                () -> assertEquals("", getTextLeft(null, null)),
+                () -> assertEquals("", getTextLeft(null, "H"))
         );
     }
 
@@ -104,13 +106,13 @@ public class UtilsTextTest {
     @DisplayName("Test getTextRight")
     void testGetTextRight() {
         assertAll("getTextRight",
-                () -> assertEquals("usUtils", UtilsText.getTextRight("VousUtils", "o")),
-                () -> assertEquals(" World!", UtilsText.getTextRight("Hello World!", "o")),
-                () -> assertEquals("", UtilsText.getTextRight("GitHub", "o")),
-                () -> assertEquals("ub", UtilsText.getTextRight("GitHub", "H")),
-                () -> assertEquals("", UtilsText.getTextRight("GitHub", null)),
-                () -> assertEquals("", UtilsText.getTextRight(null, null)),
-                () -> assertEquals("", UtilsText.getTextRight(null, "H"))
+                () -> assertEquals("usUtils", getTextRight("VousUtils", "o")),
+                () -> assertEquals(" World!", getTextRight("Hello World!", "o")),
+                () -> assertEquals("", getTextRight("GitHub", "o")),
+                () -> assertEquals("ub", getTextRight("GitHub", "H")),
+                () -> assertEquals("", getTextRight("GitHub", null)),
+                () -> assertEquals("", getTextRight(null, null)),
+                () -> assertEquals("", getTextRight(null, "H"))
         );
     }
 
@@ -119,24 +121,41 @@ public class UtilsTextTest {
     void testGetRandomString() {
         assertAll("getRandomString",
                 () -> {
-                    var text = UtilsText.getRandomString(100000, TextType.MIX);
+                    var text = getRandomString(100000, TextType.MIX);
                     var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
                     for (int i = 0; i < text.length(); i++) {
                         assert str.contains(String.valueOf(text.charAt(i))) : "getRandomString TextType.MIX failed";
                     }
                 },
                 () -> {
-                    var text = UtilsText.getRandomString(100000, TextType.LOWERCASE_ONLY);
+                    var text = getRandomString(100000, TextType.LOWERCASE_ONLY);
                     var str = "abcdefghijklmnopqrstuvwxyz";
                     for (int i = 0; i < text.length(); i++) {
                         assert str.contains(String.valueOf(text.charAt(i))) : "getRandomString TextType.LOWERCASE_ONLY failed";
                     }
                 },
                 () -> {
-                    var text = UtilsText.getRandomString(100000, TextType.UPPERCASE_ONLY);
+                    var text = getRandomString(100000, TextType.UPPERCASE_ONLY);
                     var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                     for (int i = 0; i < text.length(); i++) {
                         assert str.contains(String.valueOf(text.charAt(i))) : "getRandomString TextType.UPPERCASE_ONLY failed";
+                    }
+                }
+        );
+    }
+
+    @Test
+    @DisplayName("Test getRandomIP")
+    void testGetRandomIP() {
+        assertAll("getRandomIP",
+                () -> {
+                    var ip = getRandomIP();
+                    var split = ip.split("\\.");
+                    assert split.length == 4 : "IP string length is not 4.";
+                    final var MIN = 50;
+                    final var MAX = 254;
+                    for (var s : split) {
+                        assert UtilsNumber.isNumInRange(Integer.parseInt(s), MIN, MAX);
                     }
                 }
         );

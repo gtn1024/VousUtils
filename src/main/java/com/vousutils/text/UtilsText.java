@@ -171,4 +171,25 @@ public class UtilsText {
         }
         return sb.toString();
     }
+
+    /**
+     * Get Random IP.
+     *
+     * @return Random IP.
+     * @author Taoning Ge
+     * @since 0.2.3
+     */
+    public static String getRandomIP() {
+        var random = new Random();
+        final var MIN = 50;
+        final var MAX = 254;
+        var s = (random.nextInt(MAX - MIN) + MIN) +
+                "." +
+                (random.nextInt(MAX - MIN) + MIN) +
+                "." +
+                (random.nextInt(MAX - MIN) + MIN) +
+                "." +
+                (random.nextInt(MAX - MIN) + MIN);
+        return s;
+    }
 }
