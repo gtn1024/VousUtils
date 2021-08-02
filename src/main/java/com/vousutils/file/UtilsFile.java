@@ -27,8 +27,6 @@ public class UtilsFile {
 
     /**
      * Determine whether one specific filename is ok.
-     * <p>
-     * <strong>\ / : * ? " < > |</strong> are not allowed to appear.
      *
      * @param s one filename
      * @return boolean
