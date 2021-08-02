@@ -3,7 +3,7 @@ package com.vousutils.number;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.vousutils.number.UtilsNumber.isNumInRange;
+import static com.vousutils.number.UtilsNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilsNumberTest {
@@ -22,4 +22,19 @@ public class UtilsNumberTest {
                 () -> assertFalse(isNumInRange(-18, -17, -10))
         );
     }
+
+    @Test
+    @DisplayName("Test getRangeInt")
+    void testGetRangeInt() {
+        assertAll("getRangeInt",
+                () -> assertEquals(30, getRangeInt(10, 30, 50)),
+                () -> assertEquals(30, getRangeInt(30, 30, 50)),
+                () -> assertEquals(43, getRangeInt(43, 30, 50)),
+                () -> assertEquals(-50, getRangeInt(-10, -30, -50)),
+                () -> assertEquals(-50, getRangeInt(-30, -30, -50)),
+                () -> assertEquals(-30, getRangeInt(-43, -30, -50))
+        );
+    }
+
+
 }
